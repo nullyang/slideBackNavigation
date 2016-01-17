@@ -67,13 +67,18 @@
         return;
     }
     CGFloat tx = [gester translationInView:self.view].x;
-    if (tx<0) {
+//    NSLog(@"%zd",gester.state);
+    if (tx<=0&&gester.state == UIGestureRecognizerStateEnded) {
+        [self indentityWithAnimated:NO];
+        return;
+    }
+    if (tx<=0) {
         return;
     }
     self.view.transform = CGAffineTransformMakeTranslation(tx, 0);
     [self addLastVcView];
     [self addCoverView];
-    if (gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateCancelled) {
+    if (gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateCancelled ) {
         [self handlePop];
     }
 }
@@ -92,16 +97,16 @@
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     self.cover.frame = keyWindow.frame;
     [keyWindow insertSubview:self.cover belowSubview:self.view];
-    NSLog(@"%zd",keyWindow.subviews.count);
+//    NSLog(@"%zd",keyWindow.subviews.count);
 }
 
 #pragma 手势结束后的处理
 - (void)handlePop{
     CGFloat tx = self.view.frame.origin.x;
-    if (tx >= 100) {
+    if (tx >= CGRectGetWidth(self.view.frame) * 0.5) {
         [self customPop];
     }else {
-        [self indentity];
+        [self indentityWithAnimated:YES];
     }
 }
 
@@ -118,7 +123,11 @@
     }];
 }
 
-- (void)indentity{
+- (void)indentityWithAnimated:(BOOL)animated{
+    if (!animated) {
+        self.view.transform = CGAffineTransformIdentity;
+        return;
+    }
     [UIView animateWithDuration:0.25 animations:^{
         self.view.transform = CGAffineTransformIdentity;
     }];

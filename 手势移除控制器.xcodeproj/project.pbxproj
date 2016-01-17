@@ -19,6 +19,9 @@
 		4939D02F1C4B594E0078B2BC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4939D02E1C4B594E0078B2BC /* SecondViewController.m */; };
 		4939D0321C4B59590078B2BC /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4939D0311C4B59590078B2BC /* ThirdViewController.m */; };
 		4939D0351C4B59940078B2BC /* MYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4939D0341C4B59940078B2BC /* MYNavigationController.m */; };
+		4952D90C1C4BBA490014FC1E /* 064.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4952D90B1C4BBA490014FC1E /* 064.jpg */; };
+		4952D90E1C4BBA510014FC1E /* 155.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4952D90D1C4BBA510014FC1E /* 155.jpg */; };
+		4952D9101C4BBA7C0014FC1E /* 162.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4952D90F1C4BBA7C0014FC1E /* 162.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		4939D0311C4B59590078B2BC /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		4939D0331C4B59940078B2BC /* MYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYNavigationController.h; sourceTree = "<group>"; };
 		4939D0341C4B59940078B2BC /* MYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYNavigationController.m; sourceTree = "<group>"; };
+		4952D90B1C4BBA490014FC1E /* 064.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 064.jpg; sourceTree = "<group>"; };
+		4952D90D1C4BBA510014FC1E /* 155.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 155.jpg; sourceTree = "<group>"; };
+		4952D90F1C4BBA7C0014FC1E /* 162.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 162.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,9 @@
 		4939CFF61C4B56C10078B2BC /* 手势移除控制器 */ = {
 			isa = PBXGroup;
 			children = (
+				4952D90B1C4BBA490014FC1E /* 064.jpg */,
+				4952D90D1C4BBA510014FC1E /* 155.jpg */,
+				4952D90F1C4BBA7C0014FC1E /* 162.jpg */,
 				4939CFFA1C4B56C10078B2BC /* AppDelegate.h */,
 				4939CFFB1C4B56C10078B2BC /* AppDelegate.m */,
 				4939CFFD1C4B56C10078B2BC /* ViewController.h */,
@@ -263,7 +272,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4952D90C1C4BBA490014FC1E /* 064.jpg in Resources */,
+				4952D90E1C4BBA510014FC1E /* 155.jpg in Resources */,
 				4939D0071C4B56C10078B2BC /* LaunchScreen.storyboard in Resources */,
+				4952D9101C4BBA7C0014FC1E /* 162.jpg in Resources */,
 				4939D0041C4B56C10078B2BC /* Assets.xcassets in Resources */,
 				4939D0021C4B56C10078B2BC /* Main.storyboard in Resources */,
 			);
@@ -520,6 +532,7 @@
 				4939D0231C4B56C10078B2BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4939D0241C4B56C10078B2BC /* Build configuration list for PBXNativeTarget "手势移除控制器Tests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +541,7 @@
 				4939D0261C4B56C10078B2BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4939D0271C4B56C10078B2BC /* Build configuration list for PBXNativeTarget "手势移除控制器UITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +550,7 @@
 				4939D0291C4B56C10078B2BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
