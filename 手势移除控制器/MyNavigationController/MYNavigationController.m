@@ -1,0 +1,147 @@
+//
+//  MYNavigationController.m
+//  手势移除控制器
+//
+//  Created by 田阳阳 on 16/1/17.
+//  Copyright © 2016年 田阳阳. All rights reserved.
+//
+#define lastVcViewX -[UIScreen mainScreen].bounds.size.width * 0.6
+#import "MYNavigationController.h"
+@interface MYNavigationController()
+@property (nonatomic ,strong)UIImageView *lastVcView;
+@property (nonatomic ,strong)UIView *cover;
+@end
+@implementation MYNavigationController
+{
+    NSMutableArray *images;
+}
+
+#pragma mark - subviews
+- (UIImageView *)lastVcView{
+    if (_lastVcView) {
+        return _lastVcView;
+    }
+    _lastVcView = [[UIImageView alloc]init];
+    return _lastVcView;
+}
+
+- (UIView *)cover{
+    if (_cover) {
+        return _cover;
+    }
+    _cover = [[UIView alloc]init];
+    _cover.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    return _cover;
+}
+
+#pragma mark - uiLife
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    images = [NSMutableArray array];
+    self.interactivePopGestureRecognizer.enabled = NO;
+    self.maxBounceDistance = (self.maxBounceDistance ? self.maxBounceDistance :200);
+    self.lastVcX = (self.lastVcX?self.lastVcX:lastVcViewX);
+    UIPanGestureRecognizer *panGes =[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesAction:)];
+    [self.view addGestureRecognizer:panGes];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    [self createScreenShot];
+    [super pushViewController:viewController animated:animated];
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated{
+    [images removeLastObject];
+    return [super popViewControllerAnimated:animated];
+}
+
+#pragma mark - 截屏
+- (void)createScreenShot{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    [images addObject:image];
+}
+
+#pragma mark - 手势事件
+- (void)panGesAction:(UIPanGestureRecognizer *)gester{
+    if (self.childViewControllers.count<=1) {
+        return;
+    }
+    CGFloat tx = [gester translationInView:self.view].x;
+    //手指快速滑动的消除
+    if (tx<=0&&(gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateChanged)) {
+        [self indentityWithAnimated:NO];
+        return;
+    }
+    //只能右滑
+    if (tx<=0) {
+        if (gester.state != UIGestureRecognizerStateChanged) {
+            return;
+        }
+    }
+    self.view.transform = CGAffineTransformMakeTranslation(tx, 0);
+    [self addLastVcView];
+    [self addCoverView];
+    //结束滑动
+    if (gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateCancelled ) {
+        [self handlePop];
+    }
+}
+
+- (void)addLastVcView{
+    self.lastVcView.image = images.lastObject;
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    CGRect frame = keyWindow.bounds;
+    CGFloat lastVcStart = self.lastVcX + self.view.frame.origin.x * 0.6;
+    frame.origin.x = lastVcStart;
+    self.lastVcView.frame = frame;
+    [keyWindow insertSubview:self.lastVcView atIndex:0];
+}
+
+- (void)addCoverView{
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    self.cover.frame = keyWindow.frame;
+    [keyWindow insertSubview:self.cover atIndex:1];
+}
+
+#pragma 手势结束后的处理
+- (void)handlePop{
+    CGFloat tx = self.view.frame.origin.x;
+    if (tx >= self.maxBounceDistance) {
+        [self customPop];
+    }else {
+        [self indentityWithAnimated:YES];
+    }
+}
+
+- (void)customPop{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
+        self.lastVcView.frame = [UIScreen mainScreen].bounds;
+        self.cover.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self popViewControllerAnimated:NO];
+        self.view.transform = CGAffineTransformIdentity;
+        [self removeLastVcView];
+    }];
+}
+
+- (void)indentityWithAnimated:(BOOL)animated{
+    if (!animated) {
+        self.view.transform = CGAffineTransformIdentity;
+        [self removeLastVcView];
+    }else {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            [self removeLastVcView];
+        }];
+    }
+}
+
+- (void)removeLastVcView{
+    [self.lastVcView removeFromSuperview];
+    [self.cover removeFromSuperview];
+}
+@end

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXt-M4-h6G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B7X-b8-ICe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="9g7-lc-42N">
             <objects>
                 <navigationController id="MXt-M4-h6G" customClass="MYNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ssp-JI-tqs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUL-ga-RmV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,12 +21,91 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciS-aA-EFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="579" y="-702"/>
+            <point key="canvasLocation" x="-477" y="-3318"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="D0W-LH-s3E">
+            <objects>
+                <tabBarController id="B7X-b8-ICe" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="DY7-2E-4HG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="MXt-M4-h6G" kind="relationship" relationship="viewControllers" id="5VZ-s9-Ooo"/>
+                        <segue destination="jLw-nE-lV8" kind="relationship" relationship="viewControllers" id="ihD-uH-kHS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SrI-If-Pik" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-577" y="-2656"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="D7I-Pk-Woy">
+            <objects>
+                <navigationController id="jLw-nE-lV8" customClass="MYNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZyN-U1-sJ1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="19V-eo-6Ex">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gNC-s5-xth" kind="relationship" relationship="rootViewController" id="sCW-l9-gNf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSr-ut-AYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61" y="-2656"/>
+        </scene>
+        <!--21-->
+        <scene sceneID="Obp-K5-YQz">
+            <objects>
+                <viewController id="gNC-s5-xth" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HLo-vL-N5r"/>
+                        <viewControllerLayoutGuide type="bottom" id="P1p-WU-19Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f6f-F4-aOs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.68100088430000005" green="0.2153086072" blue="0.84272411619999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="21" id="rKq-C5-V5V">
+                        <barButtonItem key="rightBarButtonItem" title="click" id="WlW-jw-uOz">
+                            <connections>
+                                <segue destination="mhv-MT-ahB" kind="push" id="HUK-3a-X0X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bn4-lF-hTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="-2662"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bSl-Xk-wrz">
+            <objects>
+                <viewController id="mhv-MT-ahB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Kw-YM-X4w"/>
+                        <viewControllerLayoutGuide type="bottom" id="qQQ-vj-BwL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jOh-yj-Bbg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.78450520830000003" green="0.052852650360000003" blue="0.065205599180000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ctj-j8-pMY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRO-Z6-6xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1317" y="-2670"/>
         </scene>
         <!--1-->
         <scene sceneID="4Kv-QQ-BDA">
             <objects>
-                <viewController id="Jfi-v1-ajI" sceneMemberID="viewController">
+                <viewController id="Jfi-v1-ajI" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="42W-uo-7FV"/>
                         <viewControllerLayoutGuide type="bottom" id="cIs-Cd-EkH"/>
@@ -34,7 +114,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="064.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tqw-xS-Sbe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="064.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tqw-xS-Sbe">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                             </imageView>
                         </subviews>
@@ -56,12 +136,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixy-wP-p3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="-696"/>
+            <point key="canvasLocation" x="551" y="-3301"/>
         </scene>
         <!--2-->
         <scene sceneID="5x4-fF-e5o">
             <objects>
-                <viewController id="W8d-Sr-4dR" sceneMemberID="viewController">
+                <viewController id="W8d-Sr-4dR" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cug-ZH-Je1"/>
                         <viewControllerLayoutGuide type="bottom" id="kSb-3t-fpL"/>
@@ -70,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="155.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="SWy-92-qh3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="155.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="SWy-92-qh3">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                             </imageView>
                         </subviews>
@@ -92,12 +172,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOq-tK-uoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="-709"/>
+            <point key="canvasLocation" x="1725" y="-3309"/>
         </scene>
         <!--3-->
         <scene sceneID="BVt-7g-tuc">
             <objects>
-                <viewController id="8t0-37-nAz" sceneMemberID="viewController">
+                <viewController id="8t0-37-nAz" customClass="ThirdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1no-gu-5d7"/>
                         <viewControllerLayoutGuide type="bottom" id="BUK-Ir-ias"/>
@@ -106,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="162.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Wmc-RU-4yn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="162.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Wmc-RU-4yn">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                             </imageView>
                         </subviews>
@@ -122,12 +202,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ8-cK-6V5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1043" y="-70"/>
+            <point key="canvasLocation" x="2043" y="-2270"/>
         </scene>
     </scenes>
     <resources>
-        <image name="064.jpg" width="1597" height="2400"/>
-        <image name="155.jpg" width="1602" height="2400"/>
-        <image name="162.jpg" width="1602" height="2400"/>
+        <image name="064.jpg" width="361" height="759"/>
+        <image name="155.jpg" width="371" height="758"/>
+        <image name="162.jpg" width="363" height="755"/>
     </resources>
 </document>
