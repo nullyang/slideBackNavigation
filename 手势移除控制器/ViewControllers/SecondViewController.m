@@ -8,6 +8,12 @@
 
 #import "SecondViewController.h"
 
+@interface SecondViewController ()<ImageSourceProtocol>
+
+@end
 @implementation SecondViewController
 
+- (UIImage *)image{
+    return [UIImage imageNamed:@"155.jpg"];
+}
 @end

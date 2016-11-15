@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FirstViewController : UIViewController
+#import "TYImageBasicController.h"
+@interface FirstViewController : TYImageBasicController
 
 @end

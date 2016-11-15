@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B7X-b8-ICe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B7X-b8-ICe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -30,7 +33,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DY7-2E-4HG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="MXt-M4-h6G" kind="relationship" relationship="viewControllers" id="5VZ-s9-Ooo"/>
@@ -39,7 +42,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrI-If-Pik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-577" y="-2656"/>
+            <point key="canvasLocation" x="-1092" y="-2662"/>
         </scene>
         <!--Item-->
         <scene sceneID="D7I-Pk-Woy">
@@ -67,9 +70,9 @@
                         <viewControllerLayoutGuide type="bottom" id="P1p-WU-19Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f6f-F4-aOs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.68100088430000005" green="0.2153086072" blue="0.84272411619999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.68100088430000005" green="0.2153086072" blue="0.84272411619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="21" id="rKq-C5-V5V">
                         <barButtonItem key="rightBarButtonItem" title="click" id="WlW-jw-uOz">
@@ -92,9 +95,9 @@
                         <viewControllerLayoutGuide type="bottom" id="qQQ-vj-BwL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jOh-yj-Bbg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.78450520830000003" green="0.052852650360000003" blue="0.065205599180000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.78450520830000003" green="0.052852650360000003" blue="0.065205599180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ctj-j8-pMY"/>
                 </viewController>
@@ -111,20 +114,9 @@
                         <viewControllerLayoutGuide type="bottom" id="cIs-Cd-EkH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hGo-jh-9JX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="064.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tqw-xS-Sbe">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.11352182769999999" green="1" blue="0.53297386560000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="cIs-Cd-EkH" firstAttribute="top" secondItem="Tqw-xS-Sbe" secondAttribute="bottom" id="6Ga-oO-jDD"/>
-                            <constraint firstItem="Tqw-xS-Sbe" firstAttribute="top" secondItem="42W-uo-7FV" secondAttribute="bottom" id="BLL-J8-TFX"/>
-                            <constraint firstItem="Tqw-xS-Sbe" firstAttribute="leading" secondItem="hGo-jh-9JX" secondAttribute="leadingMargin" id="isH-dD-Jx4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Tqw-xS-Sbe" secondAttribute="trailing" id="kqa-BQ-tgy"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.11352182769999999" green="1" blue="0.53297386560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="1" id="e36-K4-DND">
                         <barButtonItem key="rightBarButtonItem" title="点击" id="e4J-NY-5Nn">
@@ -136,31 +128,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixy-wP-p3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-3301"/>
+            <point key="canvasLocation" x="306" y="-3328"/>
         </scene>
         <!--2-->
         <scene sceneID="5x4-fF-e5o">
             <objects>
-                <viewController id="W8d-Sr-4dR" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="W8d-Sr-4dR" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cug-ZH-Je1"/>
                         <viewControllerLayoutGuide type="bottom" id="kSb-3t-fpL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8PC-oM-BvK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="155.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="SWy-92-qh3">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.091737911189999993" blue="0.34563252519999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="SWy-92-qh3" firstAttribute="leading" secondItem="8PC-oM-BvK" secondAttribute="leadingMargin" id="diS-z0-YZP"/>
-                            <constraint firstItem="kSb-3t-fpL" firstAttribute="top" secondItem="SWy-92-qh3" secondAttribute="bottom" id="rVY-i8-F9A"/>
-                            <constraint firstItem="SWy-92-qh3" firstAttribute="top" secondItem="cug-ZH-Je1" secondAttribute="bottom" id="t8d-qE-hjr"/>
-                            <constraint firstItem="SWy-92-qh3" firstAttribute="trailing" secondItem="8PC-oM-BvK" secondAttribute="trailingMargin" id="xJt-fB-gGz"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="0.091737911189999993" blue="0.34563252519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="2" id="lDB-QQ-N5q">
                         <barButtonItem key="rightBarButtonItem" title="点击" id="2mJ-ci-MdT">
@@ -177,26 +158,15 @@
         <!--3-->
         <scene sceneID="BVt-7g-tuc">
             <objects>
-                <viewController id="8t0-37-nAz" customClass="ThirdViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="8t0-37-nAz" customClass="ThirdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1no-gu-5d7"/>
                         <viewControllerLayoutGuide type="bottom" id="BUK-Ir-ias"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="icw-36-8bO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="162.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Wmc-RU-4yn">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Wmc-RU-4yn" firstAttribute="leading" secondItem="icw-36-8bO" secondAttribute="leadingMargin" id="Dvf-DO-jSG"/>
-                            <constraint firstItem="Wmc-RU-4yn" firstAttribute="top" secondItem="1no-gu-5d7" secondAttribute="bottom" id="Hwo-Se-pEr"/>
-                            <constraint firstItem="Wmc-RU-4yn" firstAttribute="trailing" secondItem="icw-36-8bO" secondAttribute="trailingMargin" id="b95-9z-VUB"/>
-                            <constraint firstItem="BUK-Ir-ias" firstAttribute="top" secondItem="Wmc-RU-4yn" secondAttribute="bottom" id="sB8-ZS-3uF"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="3" id="mPZ-G4-4sQ"/>
                 </viewController>
@@ -205,9 +175,4 @@
             <point key="canvasLocation" x="2043" y="-2270"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="064.jpg" width="361" height="759"/>
-        <image name="155.jpg" width="371" height="758"/>
-        <image name="162.jpg" width="363" height="755"/>
-    </resources>
 </document>

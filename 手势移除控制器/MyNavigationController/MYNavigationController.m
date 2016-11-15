@@ -5,121 +5,98 @@
 //  Created by 田阳阳 on 16/1/17.
 //  Copyright © 2016年 田阳阳. All rights reserved.
 //
-#define lastVcViewX -[UIScreen mainScreen].bounds.size.width * 0.6
+
 #import "MYNavigationController.h"
 @interface MYNavigationController()
-@property (nonatomic ,strong)UIImageView *lastVcView;
-@property (nonatomic ,strong)UIView *cover;
+@property (nonatomic ,strong)UIView *bgView;
+@property (nonatomic ,strong)UIView *lastVcView;
+@property (nonatomic ,strong)NSMutableArray *historyViewList;
 @end
 @implementation MYNavigationController
-{
-    NSMutableArray *images;
-}
 
-#pragma mark - subviews
-- (UIImageView *)lastVcView{
-    if (_lastVcView) {
-        return _lastVcView;
-    }
-    _lastVcView = [[UIImageView alloc]init];
-    return _lastVcView;
-}
-
-- (UIView *)cover{
-    if (_cover) {
-        return _cover;
-    }
-    _cover = [[UIView alloc]init];
-    _cover.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    return _cover;
-}
-
-#pragma mark - uiLife
 - (void)viewDidLoad{
     [super viewDidLoad];
-    images = [NSMutableArray array];
+    self.lastVcXScale = 0.6;
+    //屏蔽原生的返回事件
     self.interactivePopGestureRecognizer.enabled = NO;
-    self.maxBounceDistance = (self.maxBounceDistance ? self.maxBounceDistance :200);
-    self.lastVcX = (self.lastVcX?self.lastVcX:lastVcViewX);
+    //触发滑动距离
+    self.trigDistance = self.trigDistance ? self.trigDistance :200;
+    //手势
     UIPanGestureRecognizer *panGes =[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesAction:)];
     [self.view addGestureRecognizer:panGes];
 }
 
+//push的时候，截图
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    [self createScreenShot];
+    UIView *view = [self.view snapshotViewAfterScreenUpdates:YES];
+    [self.historyViewList addObject:view];
     [super pushViewController:viewController animated:animated];
 }
 
+//pop的时候移除最后一个控制器的截图
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated{
-    [images removeLastObject];
+    [self.historyViewList removeLastObject];
     return [super popViewControllerAnimated:animated];
 }
 
-#pragma mark - 截屏
-- (void)createScreenShot{
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    [images addObject:image];
-}
-
 #pragma mark - 手势事件
-- (void)panGesAction:(UIPanGestureRecognizer *)gester{
-    if (self.childViewControllers.count<=1) {
+- (void)panGesAction:(UIPanGestureRecognizer *)panGesture{
+    if (!(self.childViewControllers.count > 1)) {
         return;
     }
-    CGFloat tx = [gester translationInView:self.view].x;
-    //手指快速滑动的消除
-    if (tx<=0&&(gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateChanged)) {
-        [self indentityWithAnimated:NO];
+    CGFloat tx = [panGesture translationInView:self.view].x;
+    //手指快速滑动
+    if (tx<=0 && (panGesture.state == UIGestureRecognizerStateEnded || panGesture.state == UIGestureRecognizerStateChanged)) {
+        [self resumeWithAnimated:NO];
         return;
     }
     //只能右滑
     if (tx<=0) {
-        if (gester.state != UIGestureRecognizerStateChanged) {
+        if (panGesture.state != UIGestureRecognizerStateChanged) {
             return;
         }
     }
     self.view.transform = CGAffineTransformMakeTranslation(tx, 0);
-    [self addLastVcView];
-    [self addCoverView];
-    //结束滑动
-    if (gester.state == UIGestureRecognizerStateEnded || gester.state == UIGestureRecognizerStateCancelled ) {
-        [self handlePop];
+    
+    UIView *superView = [self superView];
+    //蒙版
+    self.bgView.frame = superView.bounds;
+    self.bgView.alpha = 0.5;
+    if (![superView.subviews containsObject:self.bgView]) {
+        [superView insertSubview:self.bgView belowSubview:self.view];
     }
-}
-
-- (void)addLastVcView{
-    self.lastVcView.image = images.lastObject;
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    CGRect frame = keyWindow.bounds;
-    CGFloat lastVcStart = self.lastVcX + self.view.frame.origin.x * 0.6;
-    frame.origin.x = lastVcStart;
+    //上个控制器截图
+    CGRect frame = superView.bounds;
+    CGFloat lastVcX = (self.view.frame.origin.x - self.view.bounds.size.width)*self.lastVcXScale;
+    frame.origin.x = lastVcX;
     self.lastVcView.frame = frame;
-    [keyWindow insertSubview:self.lastVcView atIndex:0];
-}
-
-- (void)addCoverView{
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    self.cover.frame = keyWindow.frame;
-    [keyWindow insertSubview:self.cover atIndex:1];
+    if (![superView.subviews containsObject:self.lastVcView]) {
+        [superView insertSubview:self.lastVcView belowSubview:self.bgView];
+    }
+    NSLog(@"frame=%@",NSStringFromCGRect(self.lastVcView.frame));
+    //结束滑动
+    if (panGesture.state == UIGestureRecognizerStateEnded || panGesture.state == UIGestureRecognizerStateCancelled ) {
+        [self judgeShouldPop];
+    }
+    NSLog(@"tx=%f",tx);
 }
 
 #pragma 手势结束后的处理
-- (void)handlePop{
+
+- (void)judgeShouldPop{
     CGFloat tx = self.view.frame.origin.x;
-    if (tx >= self.maxBounceDistance) {
-        [self customPop];
+    if (tx >= self.trigDistance) {
+        [self popViewController];
     }else {
-        [self indentityWithAnimated:YES];
+        [self resumeWithAnimated:YES];
     }
 }
 
-- (void)customPop{
+- (void)popViewController{
     [UIView animateWithDuration:0.25 animations:^{
         self.view.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
-        self.lastVcView.frame = [UIScreen mainScreen].bounds;
-        self.cover.alpha = 0;
+        self.lastVcView.frame = [self superView].bounds;
+        self.bgView.alpha = 0;
     } completion:^(BOOL finished) {
         [self popViewControllerAnimated:NO];
         self.view.transform = CGAffineTransformIdentity;
@@ -127,7 +104,7 @@
     }];
 }
 
-- (void)indentityWithAnimated:(BOOL)animated{
+- (void)resumeWithAnimated:(BOOL)animated{
     if (!animated) {
         self.view.transform = CGAffineTransformIdentity;
         [self removeLastVcView];
@@ -142,6 +119,35 @@
 
 - (void)removeLastVcView{
     [self.lastVcView removeFromSuperview];
-    [self.cover removeFromSuperview];
+    [self.bgView removeFromSuperview];
+}
+
+- (NSMutableArray *)historyViewList{
+    if (_historyViewList) {
+        return _historyViewList;
+    }
+    _historyViewList = @[].mutableCopy;
+    return _historyViewList;
+}
+
+- (UIView *)lastVcView{
+    return self.historyViewList.lastObject;
+}
+
+- (UIView *)superView{
+    if (self.view.superview) {
+        return self.view.superview;
+    }else {
+        return [UIApplication sharedApplication].windows.lastObject;
+    }
+}
+
+- (UIView *)bgView{
+    if (_bgView) {
+        return _bgView;
+    }
+    _bgView = [[UIView alloc]init];
+    _bgView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    return _bgView;
 }
 @end

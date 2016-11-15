@@ -8,6 +8,17 @@
 
 #import "FirstViewController.h"
 
+@interface FirstViewController ()<ImageSourceProtocol>
+
+@end
+
 @implementation FirstViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+}
+
+- (UIImage *)image{
+    return [UIImage imageNamed:@"064.jpg"];
+}
 @end

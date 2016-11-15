@@ -8,6 +8,13 @@
 
 #import "ThirdViewController.h"
 
+@interface ThirdViewController ()<ImageSourceProtocol>
+
+@end
+
 @implementation ThirdViewController
 
+- (UIImage *)image{
+    return [UIImage imageNamed:@"162.jpg"];
+}
 @end

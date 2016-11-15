@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MYNavigationController : UINavigationController
-@property (nonatomic ,assign)CGFloat maxBounceDistance; //最大回弹距离
-@property (nonatomic ,assign)CGFloat lastVcX;//上一个视图截图的x值
+@property (nonatomic ,assign)CGFloat trigDistance; //触发距离
+@property (nonatomic ,assign)CGFloat lastVcXScale;//上一个控制器截图X值<0的部分占比
 @end
